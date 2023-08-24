@@ -1,5 +1,7 @@
-import * as products from "./fake.api/product.api";
+import * as products from "./fake.api/products.api";
+import categories from "./fake.api/categories.api";
 const API = {
-    products
+    products,
+    categories
 };
 export default API;

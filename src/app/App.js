@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import api from "./api";
-import ProductsPage from "./components/productsPage";
+import Products from "./components/products";
 
 function App() {
     const [products, setProducts] = useState(api.products.fetchAll());
@@ -11,7 +11,7 @@ function App() {
         setProducts(products.filter((prod) => prod.id === prodId));
     };
 
-    return <ProductsPage products={products} handleChange={handleChange} />;
+    return <Products products={products} handleChange={handleChange} />;
 }
 
 export default App;

@@ -1,0 +1,35 @@
+import React from "react";
+import PropTypes from "prop-types";
+import _ from "lodash";
+
+const TableBody = ({ data, columns }) => {
+    console.log(data);
+    const renderContent = (item, column) => {
+        if (columns[column].component) {
+            const component = columns[column].component;
+            if (typeof component === "function") {
+                return component(item);
+            }
+            return component;
+        }
+        return _.get(item, columns[column].path);
+    };
+    return (
+        <div>
+            {data.map((item) => (
+                <div key={item.id}>
+                    {Object.keys(columns).map((column) => (
+                        <div key={column}>{renderContent(item, column)}</div>
+                    ))}
+                </div>
+            ))}
+        </div>
+    );
+};
+
+TableBody.propTypes = {
+    data: PropTypes.array.isRequired,
+    columns: PropTypes.object.isRequired
+};
+
+export default TableBody;

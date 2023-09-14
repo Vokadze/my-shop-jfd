@@ -9,8 +9,7 @@ import TableHeader from "./tableHeader";
 
 const ProductsTable = ({
     products,
-    // product,
-    handleChange,
+    handleClick,
     onSort,
     selectedSort,
     handleSort,
@@ -93,7 +92,7 @@ const ProductsTable = ({
                         {...rest}
                         {...product}
                         key={product.id}
-                        handleChange={handleChange}
+                        onClick={handleClick}
                     />
                 ))}
             </tbody>
@@ -104,7 +103,7 @@ const ProductsTable = ({
 ProductsTable.propTypes = {
     products: PropTypes.array.isRequired,
     currentPath: PropTypes.func,
-    handleChange: PropTypes.func.isRequired,
+    handleClick: PropTypes.func,
     onSort: PropTypes.func.isRequired,
     selectedSort: PropTypes.object.isRequired,
     handleSort: PropTypes.object

@@ -8,13 +8,21 @@ import ProductsHeader from "./productsHeader";
 import ProductsTable from "./productsTable";
 import _ from "lodash";
 
-const Products = ({ products, handleChange, ...rest }) => {
+const Products = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [categories, setCategories] = useState();
     const [selectedCategory, setSelectedCategory] = useState();
     const [sortBy, setSortBy] = useState({ iter: "price", order: "asc" });
-    const count = products.length;
+    // const count = products.length;
     const pageSize = 4;
+
+    const [products, setProducts] = useState(api.products.fetchAll());
+
+    console.log(api.products.fetchAll());
+
+    const handleChange = (prodId) => {
+        setProducts(products.filter((prod) => prod.id === prodId));
+    };
 
     useEffect(() => {
         api.categories.fetchAll().then((data) => setCategories(data));
@@ -32,9 +40,12 @@ const Products = ({ products, handleChange, ...rest }) => {
         setSortBy(item);
     };
 
+    // if (products) {
     const filteredProducts = selectedCategory
         ? products.filter((product) => product.category === selectedCategory)
         : products;
+
+    const count = filteredProducts.length;
 
     const sortedPriceProducts = _.orderBy(
         filteredProducts,
@@ -91,6 +102,7 @@ const Products = ({ products, handleChange, ...rest }) => {
                                 onSort={handleSort}
                                 handleChange={handleChange}
                                 selectedSort={sortBy}
+                                onChange={handleChange}
                             />
                         )}
                     </div>
@@ -107,10 +119,12 @@ const Products = ({ products, handleChange, ...rest }) => {
             </div>
         </>
     );
+    // }
+    // return "Loading...";
 };
 
 Products.propTypes = {
-    handleChange: PropTypes.func.isRequired,
+    handleChange: PropTypes.func,
     products: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
 };
 

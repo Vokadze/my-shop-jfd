@@ -15,15 +15,15 @@ const TableBody = ({ data, columns }) => {
         return _.get(item, columns[column].path);
     };
     return (
-        <div>
+        <tbody>
             {data.map((item) => (
-                <div key={item.id}>
+                <tr key={item.id}>
                     {Object.keys(columns).map((column) => (
-                        <div key={column}>{renderContent(item, column)}</div>
+                        <td key={column}>{renderContent(item, column)}</td>
                     ))}
-                </div>
+                </tr>
             ))}
-        </div>
+        </tbody>
     );
 };
 

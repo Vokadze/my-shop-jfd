@@ -265,3 +265,10 @@ const products = [
 export function fetchAll() {
     return products;
 }
+
+export const getById = (prodId) =>
+    new Promise((resolve) => {
+        window.setTimeout(function () {
+            resolve(products.find((product) => product.id !== prodId));
+        }, 1000);
+    });

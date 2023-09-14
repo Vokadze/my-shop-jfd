@@ -1,7 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useHistory } from "react-router-dom";
 
-const Product = ({ image, title, id, price, handleChange }) => {
+const Product = ({ image, title, id, price }) => {
+    const history = useHistory();
+
+    const handleClick = () => {
+        history.push("/products/:prod?");
+    };
+
     return (
         <tr
             key={id}
@@ -25,9 +32,7 @@ const Product = ({ image, title, id, price, handleChange }) => {
                 <button
                     className="btn btn-primary btn-sm text-nowrap"
                     type="button"
-                    onClick={() => {
-                        handleChange(id);
-                    }}
+                    onClick={handleClick}
                 >
                     Открыть карточку
                 </button>
@@ -40,8 +45,8 @@ Product.propTypes = {
     image: PropTypes.string,
     title: PropTypes.string,
     id: PropTypes.number,
-    price: PropTypes.number,
-    handleChange: PropTypes.func
+    price: PropTypes.number
+    // handleClick: PropTypes.func
     // prodId: PropTypes.string.isRequired,
 };
 

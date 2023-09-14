@@ -1,37 +1,46 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Product = ({ product, handleChange, ...rest }) => {
+const Product = ({ image, title, id, price, handleChange }) => {
     return (
-        <div
-            key={product.id}
+        <tr
+            key={id}
             className="d-flex flex-row justify-content-between align-items-center border m-2 p-1"
         >
-            <div className="d-flex flex-column img-fluid m-1">
-                <img src={`${product.image}`} alt="" width="130" height="160" />
-            </div>
-            <div className="d-flex flex-column sm-flex bd-highlight m-2 w-55 w-50">
-                <h6>Наименование товара: {product.title}</h6>
-                <p key={product.id}>id товара: {product.id}</p>
-                <p>Стоимость: {product.price}</p>
-            </div>
-            <div className="d-grid gap-2 align-self-end mb-2 w-20">
+            <td className="d-flex flex-column img-fluid m-1">
+                <img src={`${image}`} alt="" width="130" height="160" />
+            </td>
+            <td className="d-flex flex-column sm-flex bd-highlight m-2 w-55 w-50">
+                <div>
+                    <p>Наименование товара: {title}</p>
+                </div>
+                <div>
+                    <p key={id}>id товара: {id}</p>
+                </div>
+                <div>
+                    <p>Стоимость: {price}</p>
+                </div>
+            </td>
+            <td className="d-grid gap-2 align-self-end mb-2 w-20">
                 <button
                     className="btn btn-primary btn-sm text-nowrap"
                     type="button"
                     onClick={() => {
-                        handleChange(product.id);
+                        handleChange(id);
                     }}
                 >
                     Открыть карточку
                 </button>
-            </div>
-        </div>
+            </td>
+        </tr>
     );
 };
 
 Product.propTypes = {
-    product: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+    image: PropTypes.string,
+    title: PropTypes.string,
+    id: PropTypes.number,
+    price: PropTypes.number,
     handleChange: PropTypes.func
     // prodId: PropTypes.string.isRequired,
 };

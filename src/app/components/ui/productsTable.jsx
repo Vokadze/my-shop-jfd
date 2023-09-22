@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Table from "./table";
-import Product from "./product";
-import TableHeader from "./tableHeader";
+import Table from "../table/table";
+import Product from "../table/product";
+import TableHeader from "../table/tableHeader";
 // import TableBody from "./tableBody";
 // import ProductHeader from "./productHeader";
 // import Product from "./product";

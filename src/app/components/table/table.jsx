@@ -28,6 +28,7 @@ const Table = ({
                             ...rest
                         }}
                     /> */}
+                    {/* <Product /> */}
                     <tbody>
                         {products.map((product) => (
                             <Product

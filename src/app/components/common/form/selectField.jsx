@@ -7,8 +7,12 @@ const SelectField = ({
     onChange,
     defaultOption,
     options,
+    name,
     error
 }) => {
+    const handleChange = ({ target }) => {
+        onChange({ name: [target.name], value: target.value });
+    };
     const getInputClasses = () => {
         return "form-select" + (error ? " is-invalid" : "");
     };
@@ -22,15 +26,15 @@ const SelectField = ({
             : options;
     return (
         <div className="mb-4">
-            <label htmlFor="validationCustom04" className="form-label">
+            <label htmlFor={name} className="form-label">
                 {label}
             </label>
             <select
                 className={getInputClasses()}
-                id="validationCustom04"
-                name="category"
+                id={name}
+                name={name}
                 value={value}
-                onChange={onChange}
+                onChange={handleChange}
             >
                 <option disabled value="">
                     {defaultOption}
@@ -41,15 +45,6 @@ const SelectField = ({
                             {option.name}
                         </option>
                     ))}
-                {/* {categories &&
-            Object.keys(categories).map((categoryName) => (
-                <option
-                    value={categories[categoryName].id}
-                    key={categories[categoryName].id}
-                >
-                    {categories[categoryName].name}
-                </option>
-            ))} */}
             </select>
             {error && <div className="invalid-feedback">{error}</div>}
         </div>
@@ -58,6 +53,7 @@ const SelectField = ({
 
 SelectField.propTypes = {
     label: PropTypes.string,
+    name: PropTypes.string,
     value: PropTypes.string,
     onChange: PropTypes.func,
     defaultOption: PropTypes.string,

@@ -266,6 +266,10 @@ export function fetchAll() {
     return products;
 }
 
+fetch("https://fakestoreapi.com/products/categories")
+        .then((res) => res.json())
+        .then((json) => console.log(json));
+
 export const getById = (prodId) =>
     new Promise((resolve) => {
         window.setTimeout(function () {

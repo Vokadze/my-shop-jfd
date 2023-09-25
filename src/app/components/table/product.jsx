@@ -46,8 +46,6 @@ Product.propTypes = {
     title: PropTypes.string,
     id: PropTypes.number,
     price: PropTypes.number
-    // handleClick: PropTypes.func
-    // prodId: PropTypes.string.isRequired,
 };
 
 export default Product;

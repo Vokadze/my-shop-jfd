@@ -13,7 +13,7 @@ const RegisterForm = () => {
         api.categories.fetchAll().then((data) => setCategories(data));
     }, []);
 
-    const handleChange = ({ target }) => {
+    const handleChange = (target) => {
         setData((prevState) => ({
             ...prevState,
             [target.name]: target.value
@@ -47,7 +47,8 @@ const RegisterForm = () => {
         },
         category: {
             isRequired: {
-                message: "Обязательно выберите интересующую вас категорию продукции"
+                message:
+                    "Обязательно выберите интересующую вас категорию продукции"
             }
         }
     };
@@ -92,6 +93,7 @@ const RegisterForm = () => {
             <SelectField
                 label="Выберите интересующую вас категорию продукции"
                 defaultOption="Choose..."
+                name="categories"
                 options={categories}
                 onChange={handleChange}
                 value={data.category}

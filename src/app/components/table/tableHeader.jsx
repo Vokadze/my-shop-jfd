@@ -14,15 +14,6 @@ const TableHeader = ({ onSort, selectedSort, columns }) => {
         }
     };
 
-    // const returnSortCaret = (selectedSort, currentPath) => {
-    //     if (selectedSort.path !== currentPath) return false; // { // return false;
-    //     if (selectedSort.order === "asc") {
-    //         return <i className="bi bi-caret-down-fill">QQQ</i>;
-    //     } else {
-    //         return <i className="bi bi-caret-up-fill"></i>;
-    //     }
-    // };
-
     return (
         <thead>
             <tr>
@@ -39,7 +30,6 @@ const TableHeader = ({ onSort, selectedSort, columns }) => {
                         scope="col"
                     >
                         {columns[column].name}
-                        {/* {returnSortCaret(selectedSort, columns[column].path)} */}
                     </td>
                 ))}
             </tr>
@@ -50,7 +40,6 @@ const TableHeader = ({ onSort, selectedSort, columns }) => {
 TableHeader.propTypes = {
     onSort: PropTypes.func.isRequired,
     selectedSort: PropTypes.object.isRequired,
-    // handleChange: PropTypes.func,
     columns: PropTypes.object.isRequired
 };
 

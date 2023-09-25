@@ -9,7 +9,7 @@ const ProductPage = ({ prodId }) => {
 
     useEffect(() => {
         api.products.getById(prodId).then((data) => setProduct(data));
-    });
+    }, []);
 
     const handleClick = () => {
         history.push("/products");

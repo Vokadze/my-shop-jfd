@@ -50,7 +50,6 @@ const ProductsListPage = () => {
         setSortBy(item);
     };
 
-    // if (products) {
     const filteredProducts = searchQuery
         ? products.filter(
               (product) =>
@@ -142,8 +141,6 @@ const ProductsListPage = () => {
             </div>
         </>
     );
-    // }
-    // return "Loading...";
 };
 
 ProductsListPage.propTypes = {

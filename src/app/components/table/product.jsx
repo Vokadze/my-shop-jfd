@@ -12,7 +12,7 @@ const Product = ({ image, title, id, price }) => {
     return (
         <tr
             key={id}
-            className="d-flex flex-row justify-content-between align-items-center border m-2 p-1"
+            className="d-flex flex-row justify-content-between border m-2 p-1"
         >
             <td className="d-flex flex-column img-fluid m-1">
                 <img src={`${image}`} alt="" width="130" height="160" />
@@ -46,8 +46,6 @@ Product.propTypes = {
     title: PropTypes.string,
     id: PropTypes.number,
     price: PropTypes.number
-    // handleClick: PropTypes.func
-    // prodId: PropTypes.string.isRequired,
 };
 
 export default Product;

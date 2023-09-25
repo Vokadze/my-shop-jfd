@@ -14,16 +14,6 @@ const TableHeader = ({ onSort, selectedSort, columns }) => {
         }
     };
 
-    const returnSortCaret = (selectedSort, currentPath) => {
-        if (selectedSort.path !== currentPath) return false; // { // return false;
-        if (selectedSort.order === "asc") {
-            return <i className="bi bi-caret-down-fill">QQQ</i>;
-        } else {
-            return <i className="bi bi-caret-up-fill"></i>;
-        }
-        // }
-        // return null;
-    };
     return (
         <thead>
             <tr>
@@ -39,13 +29,7 @@ const TableHeader = ({ onSort, selectedSort, columns }) => {
                         {...{ role: columns[column].path && "button" }}
                         scope="col"
                     >
-                        {/* <div className="d-flex border justify-content-center m-2 mt-3 p-2"> */}
-                        {/* <span */}
-                        {/* > */}
                         {columns[column].name}
-                        {returnSortCaret(selectedSort, columns[column].path)}
-                        {/* </span> */}
-                        {/* </div> */}
                     </td>
                 ))}
             </tr>
@@ -56,7 +40,6 @@ const TableHeader = ({ onSort, selectedSort, columns }) => {
 TableHeader.propTypes = {
     onSort: PropTypes.func.isRequired,
     selectedSort: PropTypes.object.isRequired,
-    // handleChange: PropTypes.func,
     columns: PropTypes.object.isRequired
 };
 

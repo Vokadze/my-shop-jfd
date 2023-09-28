@@ -1,4 +1,4 @@
-import { categories } from "./categories.api";
+import { categoriesObject as categories } from "./categories.api";
 const products = [
     {
         id: 1,
@@ -262,17 +262,42 @@ const products = [
     }
 ];
 
+if (!localStorage.getItem("products")) {
+    localStorage.setItem("products", JSON.stringify(products));
+}
+
+export const fetchAllLocalStorage = () =>
+    new Promise((resolve) => {
+        window.setTimeout(function () {
+            resolve(JSON.parse(localStorage.getItem("products")));
+        }, 2000);
+    });
+
+export const update = (id, data) =>
+    new Promise((resolve) => {
+        const products = JSON.parse(localStorage.getItem("products"));
+        const productIndex = products.findIndex((p) => p.id === id);
+        products[productIndex] = { ...products[productIndex], ...data };
+        localStorage.setItem("products", JSON.stringify(products));
+        resolve(products[productIndex]);
+    });
+
 export function fetchAll() {
     return products;
 }
 
 fetch("https://fakestoreapi.com/products/categories")
-        .then((res) => res.json())
-        .then((json) => console.log(json));
+    .then((res) => res.json())
+    .then((json) => console.log(json));
 
 export const getById = (prodId) =>
     new Promise((resolve) => {
         window.setTimeout(function () {
             resolve(products.find((product) => product.id !== prodId));
+            resolve(
+                JSON.parse(localStorage.getItem("products")).find(
+                    (product) => product.id === prodId
+                )
+            );
         }, 1000);
     });

@@ -6,7 +6,8 @@ const Product = ({ image, title, id, price }) => {
     const history = useHistory();
 
     const handleClick = () => {
-        history.push("/products/:prod?");
+        // console.log(id);
+        history.push(`/products/${id}`);
     };
 
     return (

@@ -12,7 +12,8 @@ const ProductPage = ({ prodId }) => {
     }, []);
 
     const handleClick = () => {
-        history.push("/products");
+        history.push(history.location.pathname + "/edit");
+        // history.push("/products");
     };
 
     if (product) {
@@ -23,7 +24,8 @@ const ProductPage = ({ prodId }) => {
                 <p>Наименование товара: {product.title}</p>
                 <p>id товара: {product.id}</p>
                 <p>Стоимость: {product.price}</p>
-                <button onClick={handleClick}>Список товаров</button>
+                <button onClick={handleClick}>Изменить</button>
+                {/* <button onClick={handleClick}>Список товаров</button> */}
             </>
         );
     } else {
